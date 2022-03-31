@@ -1,0 +1,15 @@
+{
+    "pages": [
+        "pages/welcome/welcome",
+        "pages/index/index",
+        "pages/logs/logs",
+        "pages/init/init"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "谁是卧底线下聚会版",
+        "navigationBarTextStyle": "black"
+    },
+    "sitemapLocation": "sitemap.json"
+}
