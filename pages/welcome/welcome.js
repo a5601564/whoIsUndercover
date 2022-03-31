@@ -19,7 +19,7 @@ Page({
    */
   onLoad: function (options) {
     wx.setNavigationBarTitle({
-      title: '谁是卧底X'
+      title: '谁是卧底聚会版'
     })
   },
 

@@ -32,7 +32,20 @@
       </div>
 
       <div class="handle-repeat-wrap">
-        <button bindtap="selfDefine">自定义词条</button>
+        <button bindtap="bindViewTap">自定义词条</button>
+        <view >
+            <modal title="对话框" hidden="{{modalHidden}}" confirm-text="确定"
+            cancel-text="取消" bindconfirm="modalBindaconfirm" bindcancel="modalBindcancel">
+            <label class="form-item-wrap">
+                <text class="form-item-label">平民：</text>
+                <input class="normal-input" type="text" bindinput="bindPingminLabelInput" value="{{pingmin_label}}" />
+            </label>
+            <label class="form-item-wrap">
+                <text class="form-item-label">卧底：</text>
+                <input class="normal-input" type="text" bindinput="bindWodiLabelInput" value="{{wodi_label}}" />
+            </label>
+            </modal>
+        </view>
       </div>
 
       <div class="handle-repeat-wrap">

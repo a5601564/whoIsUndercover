@@ -75,7 +75,12 @@ function Xman() {
 	 */
   _self.start = function (words) {
     // 每个人的单词
-    if (!words) {
+    console.log("start",words ,! (words instanceof Array) )
+    if(!(words instanceof Array)){
+      words = undefined
+    }
+    console.log("start",words ,words instanceof Array )
+    if (!words ) {
       let length = wordsDB.length;
       let index = Math.floor(Math.random() * length)
       words = wordsDB[index]

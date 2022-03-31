@@ -15,7 +15,12 @@ Page({
     cards: [],
     currentPlayer: 0,
     result: '游戏进行中',
+    modalHidden: true,
+    pingmin_label : '',
+    wodi_label : '',
   },
+  
+
   generatorArray: function (num) {
     let arr = []
     while (num-- > 0) {
@@ -39,6 +44,18 @@ Page({
       xmanNumber: parseInt(e.detail.value)
     })
   },
+  bindPingminLabelInput: function (e) {
+    this.setData({
+      pingmin_label: e.detail.value
+    })
+  },
+
+  bindWodiLabelInput: function (e) {
+    this.setData({
+      wodi_label: e.detail.value
+    })
+  },
+
   initXman: function (e) {
     this.setData({
       xman: new Xman()
@@ -100,8 +117,8 @@ Page({
       result: res
     })
   },
-  continueGame: function () {
-    this.data.xman.start()
+  continueGame: function (words) {
+    this.data.xman.start(words)
     let idArray = this.data.xman.getIdArray()
     console.log(idArray)
     this.setData({
@@ -112,8 +129,16 @@ Page({
     })
   },
   selfDefine: function () {
-    this.setData({
-      gameStatus:9,
+    wx.showModal({
+      title: '提示',
+      content: '这是一个模态弹窗',
+      success (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
     })
   },
 
@@ -191,5 +216,32 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  //事件处理函数
+  bindViewTap: function() {
+    this.setData({
+      modalHidden:!this.data.modalHidden
+    })
+    
+  },
+  //确定按钮点击事件
+  modalBindaconfirm:function(){
+    console.log(this.data)
+    
+    this.setData({
+      modalHidden:!this.data.modalHidden,
+    })
+    console.log(this.data)
+    let words = undefined
+    if( this.data.pingmin_label.length > 0){
+      words = [this.data.pingmin_label,this.data.wodi_label ]
+    }
+    this.continueGame(words)
+  },
+  //取消按钮点击事件
+  modalBindcancel:function(){
+    this.setData({
+      modalHidden:!this.data.modalHidden,
+    })
+  },  
 })
